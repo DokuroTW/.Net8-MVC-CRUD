@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<CRUDReview.Models.Field>
+@if(Model.Any())
+{
+    <h1>Content List</h1>
+    <a class="btn btn-primary" asp-controller="FieldController1" asp-action="Add">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var field in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="btn" asp-controller="FieldController1" asp-action="Detail" asp-route-id="@field.Id"
+                           data-toggle="tooltip" data-placement="top" title="Click to view details">
+                            @field.Id
+                        </a>
+                    </td>
+                    <td>@field.Name</td>
+                    <td>@field.Title</td>
+                    <td>
+                        @* <a class="btn btn-primary" asp-controller="FieldController1" asp-action="Detail" asp-route-id="@field.Id">Detail</a> *@
+                        <a class="btn btn-warning" asp-controller="FieldController1" asp-action="Edit" asp-route-id="@field.Id">Edit</a>
+                        <a class="btn btn-danger" asp-controller="FieldController1" asp-action="Delete" asp-route-id="@field.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    }
+}
+else
+{
+    <h1>Content List</h1>
+    <a class="btn btn-primary" asp-controller="FieldController1" asp-action="Add">Create</a>
+    <div class="container mt-5">
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem; margin: 0 auto;">
+            <div class="card-header text-center">Oops!</div>
+            <div class="card-body">
+                <h5 class="card-title text-center">Nothing inside !!!</h5>
+                <p class="card-text text-center">It seems there's nothing to display here.</p>
+            </div>
+        </div>
+    </div>
+}

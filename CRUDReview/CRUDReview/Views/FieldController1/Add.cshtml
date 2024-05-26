@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CRUDReview.Models.AddFieldViewModel
+<h1>Create Context</h1>
+
+<form method="post">
+    <div>
+        <label class="form-lable">Name</label>
+        <input type="text" class="form-control" asp-for="Name" />
+    </div>
+
+    <div>
+        <label class="form-lable">Title</label>
+        <input type="text" class="form-control" asp-for="Title" />
+    </div>
+
+    <div>
+        <label class="form-lable">Content</label>
+        <textarea class="form-control" rows="10" cols="50" asp-for="Content"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">save</button>
+    </div>
+</form>
